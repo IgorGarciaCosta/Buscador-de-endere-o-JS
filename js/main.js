@@ -1,9 +1,16 @@
-function consultaCep(){
+function consultaCep() {
+    var cep = document.getElementById("cep").value;
+    var url = "https://viacep.com.br/ws/" + cep + "/json";
     $.ajax({
-        url:"https://viacep.com.br/ws/48700000/json",
-        type:"GET",
-        success: function(response){
+        url: url,
+        type: "GET",
+        success: function (response) {
             console.log(response);
+
+            $("#logradouro").html(response.logradouro);
+            $("#bairro").html(response.bairro);
+            $("#localidade").html(response.localidade);
+            $("#uf").html(response.uf);
         }
     })
 }
